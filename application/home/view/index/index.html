@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		{/*
+		{extend name="base" /}
+		{block name="head"}这是子模块里面的区块，用来替换基础模板里面的内容。{/block}
+		{block name="footer"}测试模块{/block}
+		*/}
+		{$Think.get.page}
+		{$Request.get.page}
+		{volist name="list" id="vo" offset="2" length='10'}
+		{$vo.id}====>{$vo.name}<br />
+		{/volist}
+		
+		
+	</body>
+</html>

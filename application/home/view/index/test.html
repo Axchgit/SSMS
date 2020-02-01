@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<ul>
+				{volist name='list' id='user'}
+				<li>
+					 {$user.name}
+				</li>
+				{/volist} 
+			</ul> 
+		</div> 
+		<div style="color: #FF0000;">{$list|raw}</div>
+	</body>
+</html>
