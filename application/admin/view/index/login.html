@@ -10,31 +10,27 @@
     <script type="text/javascript" src="/static/js/user/index/index.js"></script>
 </head>
 
-
 <body>
     <div id="container">
         <div id="content">
-            <form action="index/login" method="post" name="loginForm" class="loginForm">
+            <!-- TODOTIP:提交页面方式：直接写方法名或者“/admin/index/list”的形式，前面“/”不能省； -->
+            <form action="checkLogin" method="post" name="loginForm" class="loginForm">
                 <div>
                     <label title="登录名" for="loginUser">
 						<img src="/static/img/user/index/liginUser.png"/></label>
-                    <input type="text" id="loginUser" name="userId" value="" />
-                    <input type="text" class="userHint" placeholder="用户名" />
+                    <input type="text" id="loginUser" name="name" value="" />
+                    <input type="text" name="name" class="userHint" placeholder="用户名" />
                 </div>
                 <div>
                     <label title="密码" for="loginPass">
 						<img src="/static/img/user/index/loginPadd.png"/>
 					</label>
-                    <input type="password" id="loginPass" name="userPass" />
-                    <input type="text" class="userPasswordHint" name="" id="" placeholder="至少6位的密码" />
+                    <input type="password" id="loginPass" name="pwd" />
+                    <input type="password" class="userPasswordHint" name="pwd" id="" placeholder="至少6位的密码" />
                 </div>
                 <div class="captcha">
-
                     <input type="text" name="code" placeholder="请输入验证码" class='code'>
                     <img src="{:captcha_src()}" alt="captcha" id="code" />点击刷新
-
-
-
                     <!-- <div>{:captcha_img()}</div> -->
                     <script type="text/javascript">
                         var code = document.getElementById("code");
