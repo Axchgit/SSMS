@@ -33,6 +33,6 @@ class Index
         return 'hello,' . $name;
     }
     public function checkLogin(){
-    	echo "123";
+      echo "123";
     }
 }
