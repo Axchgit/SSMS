@@ -24,6 +24,56 @@
                             <span>
 <!-- 日历 -->
 <SCRIPT type=text/javascript src="/static/js/admin/clock.js"></SCRIPT>
+<SCRIPT type=text/javascript src="/static/js/admin/button.js"></SCRIPT>
+<SCRIPT type=text/javascript src="/static/js/admin/jquery-3.4.1.js"></SCRIPT>
+
+<script>
+function queryTime(obj) {
+    //清空其它同类按钮选中颜色
+    // $('button[id^="SupendButton-"]').css("background-color", "#fff");
+    // $('button[id^="SupendButton-"]').addClass('SupendButton button');
+    
+    // TODO:hover事件更换背景图，点击后重设css背景图属性后，hover事件更换背景图失效，暂时移除hover事件更换背景图属性
+    // FIXME:寻找能返回标签原始属性的方法；
+    $('button[id^="SupendButton-"]').css({        
+    "width": "87px",
+    "height": "37px",
+    "line-height": "32px",
+    "margin": "0 2px 0 0",
+    "display": "inline",
+    "text-align": "center",
+    "font-size": "14px",
+    "font-weight": "bold",
+    "background": "url(/static/img/images/main/menu.jpg) no-repeat left bottom",
+    "float": "left",
+    // "color":"black"
+    });
+
+    // $('button[id^="SupendButton-"]').removeAttr("background")
+    
+    // $('button[id^="SupendButton-"]').removeClass('SupendButton');
+
+    // $('button[id^="SupendButton-"]').addClass('SupendButton');
+
+
+    // $(obj).css("background-color", "#01AAED");
+    //点击后变色
+    $(obj).css({ 
+        "background": "url(/static/img/images/main/menuon.jpg) no-repeat left bottom",
+        // "color": "#FFF"
+    });
+}
+</script>
+<body>
+        <div id="head-menu" class="SupendButton">
+                            <button id="SupendButton-one" class="SupendButton" onfocus="this.blur()" onclick="queryTime(this)">日报</button>
+                            <button id="SupendButton-two" class="SupendButton" onclick="queryTime(this)">月报</button>
+                            <button id="SupendButton-three" class="SupendButton" onclick="queryTime(this)">年报</button>
+
+                        </div i>
+</body>
+                    
+
 <SCRIPT type=text/javascript>showcal();</SCRIPT>
             </span>
                         </td>
@@ -36,14 +86,14 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td align="left" valign="top" id="header-admin">学生管理系统</td>
-                        <td align="left" valign="bottom" id="header-menu">
-                            <a href="index_main" target="mainFrame" onclick="this.blur()" onFocus="this.blur()" id="menuon">系统首页</a>
-                            <a href="add" target="mainFrame" onclick="this.blur()" onFocus="this.blur()">用户管理</a>
-                            <a href="add" target="mainFrame" onclick="this.blur()" onFocus="this.blur()">栏目管理</a>
-                            <a href="index.php" target="mainFrame" onFocus="this.blur()">信息管理</a>
-                            <a href="index.php" target="mainFrame" onFocus="this.blur()">留言管理</a>
-                            <a href="index.php" target="mainFrame" onFocus="this.blur()">附件管理</a>
-                            <a href="index.php" target="mainFrame" onFocus="this.blur()">站点管理</a>
+                        <td align="left" valign="bottom" id="header-menu" class="SupendButton">
+                            <a href="index_main" target="mainFrame"><button style="background:url(/static/img/images/main/menuon.jpg) no-repeat left bottom ;" id="SupendButton-one" onclick="queryTime(this)">系统首页</button></a>
+                            <a href="admin_add" target="mainFrame"><button id="SupendButton-two" onclick="queryTime(this)"  >用户管理</button></a>
+                            <a href="student_add" target="mainFrame"><button id="SupendButton-three" onclick="queryTime(this)">栏目管理</button></a>
+                            <a href="index.php" target="mainFrame"><button id="SupendButton-four" onclick="queryTime(this)">信息管理</button></a>
+                            <a href="index.php" target="mainFrame"><button id="SupendButton-five" onclick="queryTime(this)">留言管理</button></a>
+                            <a href="index.php" target="mainFrame"><button id="SupendButton-six" onclick="queryTime(this)">附件管理</button></a>
+                            <a href="index.php" target="mainFrame"><button id="SupendButton-seven" onclick="queryTime(this)">站点管理</button></a>
                         </td>
                     </tr>
                 </table>

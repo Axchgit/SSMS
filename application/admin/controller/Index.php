@@ -29,8 +29,12 @@ class Index extends Controller{
 				$ip = Request::ip();
 				//登录次数加1
 				$user->login_num+=1;
-				//添加登录地址
-				$user->ip_address = $ip;
+				//保存上次登录时间
+				$user->old_update_time = $user->update_time;
+				//保存上次登录IP
+				$user->old_ip_address = $user->new_ip_address;
+				//添加本次登录IP
+				$user->new_ip_address = $ip;
 				$user->save();
 				session('name',$user['name']);
 				return $this->success('恭喜你，登陆成功！','user/index');

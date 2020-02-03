@@ -3,11 +3,14 @@ namespace app\admin\controller;
 
 use app\admin\validate\User as UserValidate;
 use app\admin\validate\Add as AddValidate;
+use app\admin\validate\Student as StudentValidate;
+
 
 use think\Controller;
 use think\Db;
 use think\facade\Request;
 use app\admin\model\User as UserModel;
+use app\admin\model\Student as StudentModel;
 
 class User extends Base{
 
@@ -35,7 +38,7 @@ class User extends Base{
 	public function index_swich(){
 		return $this -> fetch();
 	}
-
+	//系统管理界面
 	public function index_main(){
 		$user = UserModel::where('name',session('name'))->find();
 		//管理员个数
@@ -43,9 +46,9 @@ class User extends Base{
 		//登录次数
 		$login_num = $user->login_num;
 		//上次登录时间
-		$login_time = $user->update_time;
+		$login_time = $user->old_update_time;
 		//上次登录IP地址
-		$ip_address = $user->ip_address;
+		$ip_address = $user->old_ip_address;
 		//管理员名称
 		$name = $user->name;
 		$re = new UserModel();
@@ -73,6 +76,7 @@ class User extends Base{
 			'name' => $name,
 			'mtime' => $mtime
 		]);
+		
 		return $this -> fetch();
 	}
 
@@ -84,15 +88,15 @@ class User extends Base{
 		$re = session(null);		
 		return $this -> success('注销成功','index/login');		
 	}
-
-	public function add(){
+	//添加管理员
+	public function admin_add(){
 		if(!empty($_POST)){
 			$date = input('post.');
 			$validate = new AddValidate();
 			$user = UserModel::where('name',session('name'))->find();
 			if(!$validate->check($date)){
 				// die($validate->getError());
-				return $this->error($validate->getError(),'user/add');
+				return $this->error($validate->getError(),'user/admin_add');
 			}
 			// dump($date['name']);
 			$user = UserModel::create([
@@ -110,6 +114,35 @@ class User extends Base{
 
 		return $this->fetch();
 	}
+	//添加学生信息
+	public function student_add(){
+		// if(!empty($_POST)){
+		// 	$date = input('post.');
+		// 	$validate = new StudentValidate();
+		// 	$user = UserModel::where('name',session('name'))->find();
+		// 	if(!$validate->check($date)){
+		// 		// die($validate->getError());
+		// 		return $this->error($validate->getError(),'user/admin_add');
+		// 	}
+		// 	// dump($date['name']);
+		// 	$user = StudentModel::create([
+		// 		'name' => $date['name'],
+		// 		'pwd' => md5($date['pwd'])
+		// 	]);
+		// 	return $this->success('创建成功');			
+		// 	// die();
+		// }
+		// $user = StudentModel::where('name',session('name'))->find();
+		// $pwd = $user->pwd;
+		// $this->assign([
+		// 	'pwd' => $pwd,
+		// ]);
+
+		return $this->fetch();
+
+	}
+
+
 }
 
 ?>

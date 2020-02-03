@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td align="left" valign="top">
-                <form method="post" action="add">
+                <form method="post" action="admin_add">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
                         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
                             <td align="right" valign="middle" class="borderright borderbottom bggray"> 名称：</td>
@@ -54,20 +54,19 @@
                             </td>
                         </tr> -->
                         <script>
-                            //第一个参数是提示文字，第二个参数是文本框中默认的内容
+                            //验证管理员密码
                             function checkPwd() {
-                                var word = prompt("请输入管理员密码", "");
+                                //获取输入密码
+                                var pwd = prompt("请输入管理员密码", "");
+                                //获取管理员密码
                                 value = "{$pwd}";
-
-                                if (hex_md5(word) == value) {
-                                    //输出word的格式
+                                //验证
+                                if (hex_md5(pwd) == value) {
                                     alert('密码正确,身份验证成功');
-
                                 } else {　　
                                     alert("密码错误,身份验证失败");
                                     return false;
                                 }
-
                             }
                         </script>
                         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
