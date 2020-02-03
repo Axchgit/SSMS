@@ -1,19 +1,18 @@
 <?php
 namespace app\admin\validate;
 use think\Validate;
-class User extends Validate{
+class Add extends Validate{
     protected $rule = [
-        'name' => 'require',
-        'pwd' => 'require|min:6',
-        'code' => 'require|captcha',
+        'name|名称' => 'require|min:3|max:20',
+        'pwd|密码' => 'require|min:6',
     ];
 
     protected $message = [
         'name.require' => '名称不能为空',
+        'name.min' => '名称太短',
+        'name.max' => '名称太长',
         'pwd.require' => '密码不能为空',
         'pwd.min' => '密码不能小于6位',
-        'code.require' => '验证码不能为空',
-        'code.captcha' => '验证码错误',
 
     ];
 }
