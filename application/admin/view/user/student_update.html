@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>主要内容区main</title>
+    <link href="/static/css/admin/css.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/admin/main.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/admin/add.css" type="text/css" rel="stylesheet" />
+    <SCRIPT type=text/javascript src="/static/js/admin/md5.js"></SCRIPT>
+
+    <link rel="shortcut icon" href="/static/img/images/main/favicon.ico" />
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!--main_top-->
+    <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
+        <tr>
+            <td width="99%" align="left" valign="top">您的位置：用户管理&nbsp;&nbsp;>&nbsp;&nbsp;添加用户</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">
+                <form method="post" action="student_update?id={$id}">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
+                        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                            <td align="right" valign="middle" class="borderright borderbottom bggray">姓名：</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <input type="text" name="sname" value="{$sname}" class="text-word">
+                            </td>
+                        </tr>
+                        <!-- 本系统暂时用不到学生密码 -->
+                        <!-- <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                            <td align="right" valign="middle" class="borderright borderbottom bggray">密码：</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <input type="text" name="pwd" value="" class="text-word">
+                            </td>
+                        </tr> -->
+                        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                            <td align="right" valign="middle" class="borderright borderbottom bggray">性别：</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <input type="radio" name="ssex" value="男" checked="checked">男
+                                <input type="radio" name="ssex" value="女">女
+                            </td>
+                        </tr>
+                        <!-- <script>
+                            $('#register_time').attr('value', '2015-12-09');
+
+                            //注意日期格式，一定要正确，否则也不显示
+                        </script> -->
+                        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                            <td align="right" valign="middle" class="borderright borderbottom bggray">出生日期：</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <input type="date" id="register_time" name="sbirthday" value="{$sbirthday}">
+                            </td>
+                        </tr>
+                        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                            <td align="right" valign="middle" class="borderright borderbottom bggray">班级：</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <select name="sclass" id="level">
+                                    <option value="1" >1班</option>
+                                    <option value="2" >2班</option>
+                                    <!-- <option value="201703" >201703</option>
+                                    <option value="201704" >201704</option>
+                                    <option value="201705" >201705</option> -->
+                                </select>
+                            </td>
+                        </tr>
+                        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                            <td align="right" valign="middle" class="borderright borderbottom bggray">专业：</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <select name="speciality" id="level">
+                                    <option value2="107" value3="计算机科学与技术"  >计算机科学与技术</option>
+                                    <option value1="软件工程" value2="108" >软件工程</option>
+                                    <option value1="物联网" value2="109" >物联网</option>
+                                    <option value1="大数据" value2="106" >大数据</option>
+                                    <!-- <option value1="201701" value2="201705" >201705</option value2="201701"> -->
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- <script>
+                            //验证管理员密码
+                            function checkPwd() {
+                                //获取输入密码
+                                var pwd = prompt("请输入管理员密码", "");
+                                //获取管理员密码
+                                value = "{//$pwd}";
+                                //验证
+                                if (hex_md5(pwd) == value) {
+                                    alert('密码正确,身份验证成功');
+                                } else {　　
+                                    alert("密码错误,身份验证失败");
+                                    return false;
+                                }
+                            }
+                        </script> -->
+                        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                            <td align="right" valign="middle" class="borderright borderbottom bggray">&nbsp;</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <input name="" type="submit" value="提交" onclick="" class="text-but">
+                                <input name="" type="reset" value="重置" class="text-but"></td>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

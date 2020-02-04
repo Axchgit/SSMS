@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>学生信息</title>
+    <link href="/static/css/admin/css.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/admin/main.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/admin/page.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/admin/add.css" type="text/css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/static/img/images/main/favicon.ico" />
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!--main_top-->
+    <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
+        <!-- <tr>
+            <td width="99%" align="left" valign="top">您的位置：用户管理</td>
+        </tr> -->
+        <!-- <tr>
+            <td align="left" valign="top">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="search">
+                    <tr>
+                        <form method="get" action="show.php">
+                            <td width="40%" align="left" valign="middle">
+                                <span>管理员：</span>
+                                <input type="text" name="name" value="" class="text-word">
+                            </td>
+                            <td width="20%" align="left" valign="middle">
+                                <span>性别：</span>
+                                <select name="sex">
+		<option value="">-全部-</option>
+		<option value="m">男</option>
+		<option value="w">女</option>
+		</select>
+                            </td>
+                            <td width="20%" align="left" valign="middle">
+                                <input name="" type="submit" value="查询" class="text-but">
+                        </form>
+                        <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="add.php" target="mainFrame" onFocus="this.blur()" class="add">新增学生</a></td>
+                    </tr>
+                </table>
+                </td>
+        </tr> -->
+        <tr>
+            <td align="left" class="borderright borderbottom main-for" valign="top">
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
+                    <tr style="background: #548fc9;color: white;">
+                        <th align="center" valign="middle" class="borderright">ID</th>
+                        <th align="center" valign="middle" class="borderright">学号</th>
+                        <th align="center" valign="middle" class="borderright">姓名</th>
+                        <th align="center" valign="middle" class="borderright">性别</th>
+                        <th align="center" valign="middle" class="borderright">生日</th>
+                        <th align="center" valign="middle" class="borderright">班级</th>
+                        <th align="center" valign="middle" class="borderright">专业</th>
+                        <th align="center" valign="middle" class="borderright">更新时间</th>
+                        <th align="center" valign="middle">操作</th>
+                    </tr>
+                    {volist name="data" id="vo"}
+                    <tr class="borderright borderbottom main-for" onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                        <td align="center" valign="middle" class="borderright borderbottom">{$vo.id}</td>
+                        <td align="center" valign="middle" class="borderright borderbottom">{$vo.sno}</td>
+                        <td align="center" valign="middle" class="borderright borderbottom">{$vo.sname}</td>
+                        <td align="center" valign="middle" class="borderright borderbottom">{$vo.ssex}</td>
+                        <td align="center" valign="middle" class="borderright borderbottom">{$vo.sbirthday}</td>
+                        <td align="center" valign="middle" class="borderright borderbottom">{$vo.sclass}</td>
+                        <td align="center" valign="middle" class="borderright borderbottom">{$vo.speciality}</td>
+                        <td align="center" valign="middle" class="borderright borderbottom">{$vo.update_time}</td>
+                        <td align="center" valign="middle" class="borderbottom">
+                            <a href="student_update?id={$vo.id}" target="mainFrame" class="add">修改</a>
+
+                            <span class="gray">&nbsp;|&nbsp;</span>
+                            <a href="student_delete?id={$vo.id}" target="mainFrame" onclick="return confirm('确认要删除吗？')" class="add">删除</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                </table>
+                <div align="center">{$page|raw}</div>
+                <td align="left" valign="top" class="fenye">
+                </td>
+            </td>
+        </tr>
+        <tr>
+        </tr>
+    </table>
+</body>
+
+</html>
