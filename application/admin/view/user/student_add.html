@@ -22,34 +22,60 @@
         </tr>
         <tr>
             <td align="left" valign="top">
-                <form method="post" action="admin_add">
+                <form method="post" action="student_add">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
                         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
                             <td align="right" valign="middle" class="borderright borderbottom bggray">姓名：</td>
                             <td align="left" valign="middle" class="borderright borderbottom main-for">
-                                <input type="text" name="name" value="" class="text-word">
+                                <input type="text" name="sname" value="" class="text-word">
                             </td>
                         </tr>
-                        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                        <!-- 本系统暂时用不到学生密码 -->
+                        <!-- <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
                             <td align="right" valign="middle" class="borderright borderbottom bggray">密码：</td>
                             <td align="left" valign="middle" class="borderright borderbottom main-for">
                                 <input type="text" name="pwd" value="" class="text-word">
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
                             <td align="right" valign="middle" class="borderright borderbottom bggray">性别：</td>
                             <td align="left" valign="middle" class="borderright borderbottom main-for">
-                                <input type="radio" name="sex" value="m">男
-                                <input type="radio" name="sex" value="w">女
+                                <input type="radio" name="ssex" value="男" checked="checked">男
+                                <input type="radio" name="ssex" value="女">女
+                            </td>
+                        </tr>
+                        <!-- <script>
+                            $('#register_time').attr('value', '2015-12-09');
+
+                            //注意日期格式，一定要正确，否则也不显示
+                        </script> -->
+                        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                            <td align="right" valign="middle" class="borderright borderbottom bggray">出生日期：</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <input type="date" id="register_time" name="sbirthday" value="1998-01-01">
                             </td>
                         </tr>
                         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
                             <td align="right" valign="middle" class="borderright borderbottom bggray">班级：</td>
                             <td align="left" valign="middle" class="borderright borderbottom main-for">
-                                <select name="classid" id="level">
-                                    <option value="1401" >1401</option>
-                                    <option value="1402" >1402</option>
-                                    <option value="1403" >1403</option>
+                                <select name="sclass" id="level">
+                                    <option value="1" >1班</option>
+                                    <option value="2" >2班</option>
+                                    <!-- <option value="201703" >201703</option>
+                                    <option value="201704" >201704</option>
+                                    <option value="201705" >201705</option> -->
+                                </select>
+                            </td>
+                        </tr>
+                        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                            <td align="right" valign="middle" class="borderright borderbottom bggray">专业：</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <select name="speciality" id="level">
+                                    <option value2="107" value3="计算机科学与技术"  >计算机科学与技术</option>
+                                    <option value1="软件工程" value2="108" >软件工程</option>
+                                    <option value1="物联网" value2="109" >物联网</option>
+                                    <option value1="大数据" value2="106" >大数据</option>
+                                    <!-- <option value1="201701" value2="201705" >201705</option value2="201701"> -->
                                 </select>
                             </td>
                         </tr>
@@ -72,7 +98,7 @@
                         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
                             <td align="right" valign="middle" class="borderright borderbottom bggray">&nbsp;</td>
                             <td align="left" valign="middle" class="borderright borderbottom main-for">
-                                <input name="" type="submit" value="提交" onclick="return checkPwd()" class="text-but">
+                                <input name="" type="submit" value="提交" onclick="" class="text-but">
                                 <input name="" type="reset" value="重置" class="text-but"></td>
                         </tr>
                     </table>
