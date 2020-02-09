@@ -18,32 +18,34 @@
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
         <tr>
             <td align="left" class="borderright borderbottom main-for" valign="top">
+                <tr style="background:hidden;font-size:xx-large; color:lightslategray; text-align: center; width: 50%;height: 50px;">
+                    <th>科目：{$project}</th>
 
+                </tr>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
+
                     <tr style="background: #548fc9;color: white;">
-                        <th align="center" valign="middle" class="borderright">{$project}</th>
 
+                        <th align="center" valign="middle" class="borderright">班级</th>
+                        <th align="center" valign="middle" class="borderright">优秀率</th>
+                        <th align="center" valign="middle" class="borderright">不及格率</th>
                     </tr>
-                    und: #548fc9;color: white;">
-                    <th align="center" valign="middle" class="borderright">班级</th>
-                    <th align="center" valign="middle" class="borderright">及优秀率</th>
-                    <th align="center" valign="middle" class="borderright">不及格率</th>
-        </tr>
-        {volist name="data" id="vo"}
+                    {volist name="data" id="vo"}
 
-        <tr class="borderright borderbottom main-for" onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                    <tr class="borderright borderbottom main-for" onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
 
-            <td align="center" valign="middle" class="borderright borderbottom">{$vo.sclass}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{$vo.excellent}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{$vo.failed}</td>
-        </tr>
-        {/volist}
+                        <td align="center" valign="middle" class="borderright borderbottom">{$vo.sclass}</td>
+                        <!-- TODO:小数化为百分数 -->
+                        <td align="center" valign="middle" class="borderright borderbottom">{:sprintf("%.2f", $vo.excellent*100).'%'}</td>
+                        <td align="center" valign="middle" class="borderright borderbottom">{:sprintf("%.2f", $vo.failed*100).'%'}</td>
+                    </tr>
+                    {/volist}
 
-        </table>
-        <div style="text-align: center;">{$page|raw}</div>
-        <!-- <td style="text-align: left;" valign="top" class="fenye">
+                </table>
+                <!-- <div style="text-align: center;">{//$page|raw}</div> -->
+                <!-- <td style="text-align: left;" valign="top" class="fenye">
                 </td> -->
-        </td>
+            </td>
         </tr>
         <tr>
         </tr>

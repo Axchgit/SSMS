@@ -402,11 +402,13 @@ class User extends Base
 		return $this->fetch();
 	}
 
-	//及格率查询
+	//优秀率及格率查询
 	public function score_select_field()
 	{
-		// if (!empty($_POST)) {
+		if (!empty($_POST)) {
 		$project = input('post.project');
+		// dump($project);
+		// die();
 
 		$table1 = ScoreModel::view(['admin_student' => 'a'], 'sclass', 'a.sno=b.sno', 'right')
 			->view(['admin_score' => 'b'], $project)
@@ -432,16 +434,27 @@ class User extends Base
 			->view([$table2 => 'e'], 'count2', 'a.sclass = e.sclass', 'left')
 			->view([$table1 => 'c'], 'sclass,count1')
 			->group('sclass')
-			->paginate(3)
+			// ->paginate(3)
 			// ->fetchSql(true)
 			->select();
-		$page = $data->render();
-		$this->assign('page', $page);
+			// dump($data);
+			// die();
+		// $page = $data->render();
+		// $this->assign('page', $page);
+		if($project == 'chinese'){
+			$project = '语文';
+		}
+		elseif($project == 'mathematics'){
+			$project = '数学';
+		}
+		elseif($project == 'english'){
+			$project = '英语';
+		}
 		$this->assign('project', $project);
 		$this->assign('data', $data);
 		return $this->fetch();
-		// }
-		// return $this->fetch();
+		}
+		return $this->fetch('inquire');
 	}
 
 	//测试方法
@@ -497,10 +510,11 @@ class User extends Base
 
 		// $semester = 'chinese';
 		// $a4 = '>';
+		$project = 'mathematics';
 		$table1 = ScoreModel::view(['admin_student' => 'a'], 'sclass', 'a.sno=b.sno', 'right')
-			->view(['admin_score' => 'b'], 'chinese')
+			->view(['admin_score' => 'b'], $project)
 			->field('count(*) as count1')
-			->where('chinese', '>=', '90')
+			->where($project, '>=', '90')
 			->group('sclass')
 			->buildSql();
 		// 	->fetchSql(true)
@@ -509,9 +523,9 @@ class User extends Base
 		// die();
 
 		$table2 = ScoreModel::view(['admin_student' => 'a'], 'sclass', 'a.sno=b.sno')
-			->view(['admin_score' => 'b'], 'chinese')
+			->view(['admin_score' => 'b'], $project)
 			->field('count(*) as count2')
-			->where('chinese', '<', '60')
+			->where($project, '<', '60')
 			->group('sclass')
 			->buildSql();
 		// ->fetchSql(true)
@@ -520,7 +534,7 @@ class User extends Base
 		// die();
 
 		$table5 = ScoreModel::view(['admin_student' => 'a'], 'sclass', 'a.sno=b.sno')
-			->view(['admin_score' => 'b'], 'chinese')
+			->view(['admin_score' => 'b'], $project)
 			->field('count(*) as count0')
 			->group('sclass')
 			->buildSql();
@@ -529,7 +543,7 @@ class User extends Base
 		// dump($table5);
 		// die();
 
-		$data = ScoreModel::withTrashed()->view(['admin_student' => 'a'], 'sno', 'a.sclass = c.sclass')
+		$table4 = ScoreModel::withTrashed()->view(['admin_student' => 'a'], 'sno', 'a.sclass = c.sclass')
 			->field('c.count1/d.count0 as 优秀率')
 			->field('e.count2/d.count0 as 不及格率')
 			->view([$table5 => 'd'], 'count0', 'a.sclass = d.sclass', 'left')
@@ -538,8 +552,8 @@ class User extends Base
 			->group('sclass')
 			// ->fetchSql(true)
 			->select();
-		// dump($table4);
-		// die();
+		dump($table4);
+		die();
 
 
 
