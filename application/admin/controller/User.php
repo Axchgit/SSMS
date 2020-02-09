@@ -457,6 +457,8 @@ class User extends Base
 		return $this->fetch('inquire');
 	}
 
+	
+
 	//测试方法
 	public function test()
 	{
