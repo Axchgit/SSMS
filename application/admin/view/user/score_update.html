@@ -19,24 +19,24 @@
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
         <tr>
             <td align="left" valign="top">
-                <form method="post" action="score_add?sno={$sno}">
+                <form method="post" action="score_update?id={$id}">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
                         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
                             <td align="right" valign="middle" class="borderright borderbottom bggray">语文：</td>
                             <td align="left" valign="middle" class="borderright borderbottom main-for">
-                                <input type="number" name="chinese" value="" class="text-word">
+                                <input type="number" name="chinese" value="{$chinese}" class="text-word">
                             </td>
                         </tr>
                         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
                             <td align="right" valign="middle" class="borderright borderbottom bggray">数学：</td>
                             <td align="left" valign="middle" class="borderright borderbottom main-for">
-                                <input type="number" name="mathematics" value="" class="text-word">
+                                <input type="number" name="mathematics" value="{$mathematics}" class="text-word">
                             </td>
                         </tr>
                         <tr onMouseOut="this.style.backgroundColor='#ffffff' " onMouseOver="this.style.backgroundColor='#edf5ff' ">
                             <td align="right " valign="middle " class="borderright borderbottom bggray ">英语：</td>
                             <td align="left " valign="middle " class="borderright borderbottom main-for">
-                                <input type="number" name="english" value="" class="text-word">
+                                <input type="number" name="english" value="{$english}" class="text-word">
                             </td>
                         </tr>
                         <tr onMouseOut="this.style.backgroundColor='#ffffff' " onMouseOver="this.style.backgroundColor='#edf5ff' ">
