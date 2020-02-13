@@ -402,66 +402,196 @@ class User extends Base
 		return $this->fetch();
 	}
 
+	//查询主页
+	public function select_index(){
+		return $this -> fetch('user/select/select_index');
+
+	}
+
+	//浏览信息
+	public function info_show(){
+		return $this -> fetch();
+	}
+
+	//排序查询
+	public function select_order()
+	{
+		if (!empty($_POST)) {
+			$post = input('post.');
+			$order = $post['order'];
+
+			// $get = input('get.');
+			if ($post['value'] == 'avg') {
+				$data = ScoreModel::view(['admin_student' => 'a'], '*', 'a.sno=b.sno', 'right')
+					->view(['admin_score' => 'b'], 'chinese,mathematics,english')
+					->field('(b.chinese+b.mathematics+b.english)/3 as avg')
+					->order('avg', $order)
+					// ->paginate(3);
+					->select();
+				// $page = $data->render();
+				// $this->assign('page', $page);
+				$this->assign('data', $data);
+				return $this->fetch('user/select/student_order_list');
+			} elseif ($post['value'] == 'sum') {
+				$data = ScoreModel::view(['admin_student' => 'a'], '*', 'a.sno=b.sno', 'right')
+					->view(['admin_score' => 'b'], 'chinese,mathematics,english')
+					->field('b.chinese+b.mathematics+b.english as sum')
+					->order('sum', $order)
+					->select();
+				$this->assign('data', $data);
+				return $this->fetch('user/select/student_order_list');
+			} elseif ($post['value'] == 'sno') {
+				$data = ScoreModel::view(['admin_student' => 'a'], '*', 'a.sno=b.sno', 'right')
+					->view(['admin_score' => 'b'], 'chinese,mathematics,english')
+					// ->field('b.chinese+b.mathematics+b.english as sum')
+					->order('sno', $order)
+					->select();
+				$this->assign('data', $data);
+				return $this->fetch('user/select/student_order_list');
+			} else {
+				$project = $post['value'];
+				$data = ScoreModel::view(['admin_student' => 'a'], '*', 'a.sno=b.sno', 'right')
+					->view(['admin_score' => 'b'], $project)
+					->order($project, $order)
+					->select();
+				$this->assign('data', $data);
+				return $this->fetch('user/select/student_order_list');
+			}
+		}
+		return $this->fetch('user/select/order');
+	}
+
+	//关键字查询
+	public function select_key()
+	{
+		if (!empty($_POST)) {
+
+			$key = input('post.');
+			if ($key['value'] == 'sclass') {
+				$data = StudentModel::where('sclass', $key['key'])
+					->select();
+				$this->assign('data', $data);
+				return $this->fetch('user/select/student_order_list');
+			}
+			$data = StudentModel::whereOr('sno', $key['key'])
+				->whereOr('sname', $key['key'])
+				->select();
+			$this->assign('data', $data);
+			return $this->fetch('user/select/student_order_list');
+		}
+		return $this->fetch('user/select/key');
+	}
+
+	//极端分数查询
+	public function select_main()
+	{
+		if (!empty($_POST)) {
+			$post = input('post.');
+			$project = $post['project'];
+			if ($post['value'] == 'max') {
+				$data = ScoreModel::view(['admin_student' => 'a'], '*', 'a.sno=b.sno', 'left')
+					->view(['admin_score' => 'b'], $project)
+					->field("max({$project})")
+					->select();
+				$this->assign('data', $data);
+				return $this->fetch('user/select/student_order_list');
+			}
+			if ($post['value'] == 'min') {
+				$data = ScoreModel::view(['admin_student' => 'a'], '*', 'a.sno=b.sno', 'left')
+					->view(['admin_score' => 'b'], $project)
+					->field("min({$project})")
+					->select();
+				$this->assign('data', $data);
+				return $this->fetch('user/select/student_order_list');
+			}
+		}
+		return $this->fetch('user/select/main');
+	}
+
 	//优秀率及格率查询
 	public function score_select_field()
 	{
 		if (!empty($_POST)) {
-		$project = input('post.project');
-		// dump($project);
-		// die();
+			$project = input('post.project');
+			// dump($project);
+			// die();
 
-		$table1 = ScoreModel::view(['admin_student' => 'a'], 'sclass', 'a.sno=b.sno', 'right')
-			->view(['admin_score' => 'b'], $project)
-			->field('count(*) as count1')
-			->where($project, '>=', '90')
-			->group('sclass')
-			->buildSql();
-		$table2 = ScoreModel::view(['admin_student' => 'a'], 'sclass', 'a.sno=b.sno')
-			->view(['admin_score' => 'b'], $project)
-			->field('count(*) as count2')
-			->where($project, '<', '60')
-			->group('sclass')
-			->buildSql();
-		$table5 = ScoreModel::view(['admin_student' => 'a'], 'sclass', 'a.sno=b.sno')
-			->view(['admin_score' => 'b'], $project)
-			->field('count(*) as count0')
-			->group('sclass')
-			->buildSql();
-		$data = ScoreModel::withTrashed()->view(['admin_student' => 'a'], 'sno', 'a.sclass = c.sclass')
-			->field('c.count1/d.count0 as excellent')
-			->field('e.count2/d.count0 as failed')
-			->view([$table5 => 'd'], 'count0', 'a.sclass = d.sclass', 'left')
-			->view([$table2 => 'e'], 'count2', 'a.sclass = e.sclass', 'left')
-			->view([$table1 => 'c'], 'sclass,count1')
-			->group('sclass')
-			// ->paginate(3)
-			// ->fetchSql(true)
-			->select();
+			$table1 = ScoreModel::view(['admin_student' => 'a'], 'sclass', 'a.sno=b.sno', 'right')
+				->view(['admin_score' => 'b'], $project)
+				->field('count(*) as count1')
+				->where($project, '>=', '90')
+				->group('sclass')
+				->buildSql();
+			$table2 = ScoreModel::view(['admin_student' => 'a'], 'sclass', 'a.sno=b.sno')
+				->view(['admin_score' => 'b'], $project)
+				->field('count(*) as count2')
+				->where($project, '<', '60')
+				->group('sclass')
+				->buildSql();
+			$table5 = ScoreModel::view(['admin_student' => 'a'], 'sclass', 'a.sno=b.sno')
+				->view(['admin_score' => 'b'], $project)
+				->field('count(*) as count0')
+				->group('sclass')
+				->buildSql();
+			$data = ScoreModel::withTrashed()->view(['admin_student' => 'a'], 'sno', 'a.sclass = c.sclass')
+				->field('c.count1/d.count0 as excellent')
+				->field('e.count2/d.count0 as failed')
+				->view([$table5 => 'd'], 'count0', 'a.sclass = d.sclass', 'left')
+				->view([$table2 => 'e'], 'count2', 'a.sclass = e.sclass', 'left')
+				->view([$table1 => 'c'], 'sclass,count1')
+				->group('sclass')
+				// ->paginate(3)
+				// ->fetchSql(true)
+				->select();
 			// dump($data);
 			// die();
-		// $page = $data->render();
-		// $this->assign('page', $page);
-		if($project == 'chinese'){
-			$project = '语文';
-		}
-		elseif($project == 'mathematics'){
-			$project = '数学';
-		}
-		elseif($project == 'english'){
-			$project = '英语';
-		}
-		$this->assign('project', $project);
-		$this->assign('data', $data);
-		return $this->fetch();
+			// $page = $data->render();
+			// $this->assign('page', $page);
+			if ($project == 'chinese') {
+				$project = '语文';
+			} elseif ($project == 'mathematics') {
+				$project = '数学';
+			} elseif ($project == 'english') {
+				$project = '英语';
+			}
+			$this->assign('project', $project);
+			$this->assign('data', $data);
+			return $this->fetch();
 		}
 		return $this->fetch('inquire');
 	}
 
-	
+
 
 	//测试方法
 	public function test()
 	{
+		return $this->fetch('select');
+
+		$project = 'chinese';
+
+		$table6 = ScoreModel::view(['admin_student' => 'a'], '*', 'a.sno=b.sno', 'left')
+			// ->view([$table6 => 'd'],'count1','a.sno = d.sno')
+			->view(['admin_score' => 'b'], $project)
+			->field('count(*) as count1')
+			->where("b.{$project}", '>', "c.{$project}")
+			->buildSql();
+
+		$data = ScoreModel::view(['admin_student' => 'e'], '*', 'e.sno=c.sno', 'left')
+			->view([$table6 => 'd'], 'count1', 'e.sno = d.sno')
+			->view(['admin_score' => 'c'], $project)
+			// ->field("max({$project})")
+			->where('1', '>', 'd.count1')
+			->fetchSql()
+			->select();
+		dump($data);
+		die();
+
+
+
+
+
+
 		// $test = "'speciality'".','."'物联网'";
 		// $a1 = 'speciality';
 		// $a2 = '计算机科学与技术';

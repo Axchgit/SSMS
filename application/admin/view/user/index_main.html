@@ -25,7 +25,7 @@
             <td align="left" valign="top" width="50%">
                 <div class="main-tit">网站信息</div>
                 <div class="main-con">
-                    会员注册：开启<br/> 会员投稿：开启
+                    管理员添加：需验证身份
                     <br/> 管理员个数：
                     <font color="#538ec6"><strong>{$count}</strong></font> 人<br/> 登陆者IP：{$ip}:{$port}
                     <br/> 程序编码：{:mb_detect_encoding('测试字符串', array("ASCII",'UTF-8',"GB2312","GBK",'BIG5'))}
@@ -38,7 +38,6 @@
                     服务器软件：{:apache_get_version()}
                     <br/> PHP版本：{:phpversion()}
                     <br/> MYSQL版本：{$mysql['0']['version()']}
-                    <br/> 魔术引用：开启 (建议开启)
                     <br/> 使用域名：{$host}
                     <br/>
                 </div>

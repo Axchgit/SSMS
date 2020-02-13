@@ -15,6 +15,7 @@
 
 <body>
     <!--main_top-->
+
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
         <tr>
             <td align="left" class="borderright borderbottom main-for" valign="top">
@@ -42,6 +43,12 @@
                     {/volist}
 
                 </table>
+                <button onclick="back()">返回上一步</button>
+                <script>
+                    function back() {
+                        window.history.back(-1);
+                    }
+                </script>
                 <!-- <div style="text-align: center;">{//$page|raw}</div> -->
                 <!-- <td style="text-align: left;" valign="top" class="fenye">
                 </td> -->

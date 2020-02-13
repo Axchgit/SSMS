@@ -12,15 +12,21 @@
     <!--禁止网页另存为-->
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="header">
         <tr>
-            <td rowspan="2" align="left" valign="top" id="logo"><img src="/static/img/images/main/logo.jpg" width="74" height="64"></td>
+            <td rowspan="2" align="left" valign="top" id="logo"><img style="border-radius: 100px;" src="/static/img/images/main/hcxy.png" width="74" height="64"></td>
             <td align="left" valign="bottom">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <td align="left" valign="bottom" id="header-name">河池学院</td>
+                        <td align="left" valign="bottom" id="header-name">
+                            <h1 style="color: darkgoldenrod;"> <span style="color:rgb(175, 159, 117)3,52);text-align: center;">河池学院</span>
+                                <span style="color: rgb(114,83,52);">֍</span>
+                                <span style="color: #538ec6;">学生成绩管理系统</span></h1>
+                        </td>
                         <td align="right" valign="top" id="header-right">
                             <a href="loginOut" target="topFrame" onFocus="this.blur()" class="admin-out">注销</a>
-                            <a href="index.php" target="top" onFocus="this.blur()" class="admin-home">管理首页</a>
-                            <a href="index.php" target="_blank" onFocus="this.blur()" class="admin-index">网站首页</a>
+                            <!-- <a href="index.php" target="top" onFocus="this.blur()" class="admin-home">管理首页</a> -->
+                            <a href="admin_add" target="mainFrame" onFocus="this.blur()" class="admin-home">添加管理员</a>
+
+                            <a href="index_main" target="mainFrame" onFocus="this.blur()" class="admin-index">系统首页</a>
                             <span>
 <!-- 日历 -->
 <SCRIPT type=text/javascript src="/static/js/admin/clock.js"></SCRIPT>
@@ -82,18 +88,21 @@ function queryTime(obj) {
             <td align="left" valign="bottom">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <td align="left" valign="top" id="header-admin">学生管理系统</td>
+                        <td align="left" valign="top" id="header-admin"></td>
                         <td align="left" valign="bottom" id="header-menu" class="SupendButton">
-                            <a href="index_main" target="mainFrame"><button style="background:url(/static/img/images/main/menuon.jpg) no-repeat left bottom ;" id="SupendButton-one" onclick="queryTime(this)">系统首页</button></a>
-                            <a href="admin_add" onFocus="this.blur()" target="mainFrame"><button id="SupendButton-two" onFocus="this.blur()" onclick="queryTime(this)"  >用户管理</button></a>
+
+
+
+                            <!-- <a href="index_main" target="mainFrame"><button style="background:url(/static/img/images/main/menuon.jpg) no-repeat left bottom ;" id="SupendButton-one" onclick="queryTime(this)">系统首页</button></a> -->
+                            <!-- <a href="admin_add" onFocus="this.blur()" target="mainFrame"><button id="SupendButton-two" onFocus="this.blur()" onclick="queryTime(this)"  >用户管理</button></a>
                             <a href="student_add" onFocus="this.blur()" target="mainFrame"><button id="SupendButton-three" onclick="queryTime(this)">栏目管理</button></a>
                             <a href="score_list" onFocus="this.blur()" target="mainFrame"><button id="SupendButton-four" onclick="queryTime(this)">信息管理</button></a>
                             <a href="test" onFocus="this.blur()" target="mainFrame"><button id="SupendButton-five" onclick="queryTime(this)">留言管理</button></a>
                             <a href="score_select_field" onFocus="this.blur()" target="mainFrame"><button id="SupendButton-six" onclick="queryTime(this)">附件管理</button></a>
-                            <a href="index.php" onFocus="this.blur()" target="mainFrame"><button id="SupendButton-seven" onclick="queryTime(this)">站点管理</button></a>
+                            <a href="score_select_key" onFocus="this.blur()" target="mainFrame"><button id="SupendButton-seven" onclick="queryTime(this)">站点管理</button></a> -->
                         </td>
                         <td align="right" valign="bottom" id="header-menu" class="SupendButton">
-                            <a href="admin_add" onFocus="this.blur()" target="mainFrame"><button style="background: chocolate;"  >添加管理员</button></a>
+                            <!-- <a href="admin_add" onFocus="this.blur()" target="mainFrame"><button style="background: chocolate;"  >添加管理员</button></a> -->
                         </td>
                     </tr>
                 </table>

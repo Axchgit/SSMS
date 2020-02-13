@@ -1,0 +1,213 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查询信息</title>
+    <link href="/static/css/admin/css.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/admin/main.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/admin/page.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/admin/add.css" type="text/css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/static/img/images/main/favicon.ico" />
+    <style>
+        #top {
+            width: 300%;
+            height: 15%;
+            background-color: #565656;
+        }
+        
+        #left {
+            width: 15%;
+            height: 300%;
+            float: left;
+            background-color: #ccc;
+        }
+        
+        #content {
+            width: 300%;
+            height: 620px;
+            margin-left: 1%;
+            background-color: #fff;
+        }
+        
+        .button {
+            background-color: white;
+            /* Green */
+            border: none;
+            color: #548fc9;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.2s;
+            /* Safari */
+            transition-duration: 0.2s;
+            cursor: pointer;
+        }
+        /* .button {
+            background-color: white;
+            color: black;
+            border: 2px solid #548fc9;
+        } */
+        
+        .button1 {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+        
+        .button1:hover {
+            background-color: #548fc9;
+            color: white;
+        }
+        /* #test {
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            right: 25px;
+            bottom: 10px;
+            display: none;
+            background-color: #FFFFFF;
+        } */
+    </style>
+    <script type="text/javascript">
+        //      回到顶部效果
+        window.onload = function() {
+            var obtn = document.getElementById('test'); //获取回到顶部按钮的ID
+            var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+            // alert(osTop);
+            var clientHeight = document.documentElement.clientHeight; //获取可视区域的高度
+            var timer = null; //定义一个定时器
+            var isTop = true; //定义一个布尔值，用于判断是否到达顶部
+            // window.onscroll = function() {
+            //     alert('也滚动了');
+            // }
+            // document.getElementById("qqq").onscroll = function() {
+            //     alert('滚动了');
+            //     myFunction()
+            // };
+            // if (osTop >= 10) {
+            //     document.getElementById('test').style.display = 'block';
+            //     // alert('陈工');
+            // }
+
+            // function myFunction() { //滚动条滚动事件
+
+            //     //获取滚动条的滚动高度
+            //     var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+            //     if (osTop >= clientHeight) { //如果滚动高度大于可视区域高度，则显示回到顶部按钮
+            //         obtn.style.display = 'block';
+            //     } else { //否则隐藏
+            //         obtn.style.display = 'none';
+            //     }
+
+            //     //主要用于判断当 点击回到顶部按钮后 滚动条在回滚过程中，若手动滚动滚动条，则清除定时器
+            //     if (!isTop) {
+            //         clearInterval(timer);
+            //     }
+            //     isTop = false;
+            // }
+
+
+            obtn.onclick = function() { //回到顶部按钮点击事件
+                //设置一个定时器
+                timer = setInterval(function() {
+                    //获取滚动条的滚动高度
+                    var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                    //用于设置速度差，产生缓动的效果
+                    var speed = Math.floor(-osTop / 6);
+                    document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
+                    isTop = true; //用于阻止滚动事件清除定时器
+                    if (osTop == 0) {
+                        clearInterval(timer);
+                    }
+                }, 30);
+            }
+        }
+    </script>
+
+</head>
+<style>
+
+</style>
+
+
+
+<body style="height: 90%;">
+    <!-- 回到顶部 -->
+    <!-- <div id="topAnchor"></div>
+    <a href="#topAnchor" style="position:fixed;right:0;bottom:0">回到顶部</a> -->
+
+    <!-- <a href="javascript:;" id="test" title="回到顶部">返回顶部</a> -->
+
+    <script>
+        test.onclick = function() {
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+    <div style="text-align: center;">
+        <!-- <span href="#abc"><span>点击跳转</span></a> -->
+        <table style="text-align: center;">
+            <tr>
+
+                <td style="text-align: center; width: 300px;">
+                    <a href="#a">
+                        <button><h1 style="color: #565656;">优秀率查询</h1></button>
+                    </a>
+                </td>
+
+                <td style="text-align: center;width: 300px;">
+                    <a href="#b">
+                        <button><h1 style="color: #565656;">排序查询</h1></button>
+                    </a>
+                </td>
+
+                <td style="text-align: center;width: 300px;">
+                    <a href="#c">
+                        <button><h1 style="color: #565656;">关键字查询</h1></button>
+                    </a>
+                </td>
+
+                <td style="text-align: center;width: 300px;">
+                    <a href="#d">
+                        <button><h1 style="color: #565656;">极端分数查询</h1></button>
+                    </a>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div id="a">
+        <br>
+        <h1 style="text-align: center; color:rgb(116, 81, 91);">优秀率查询</h1>
+        <br>
+        <iframe id="content" src="score_select_field" frameborder="1"></iframe>
+    </div>
+    <div id="b">
+        <br>
+        <h1 style="text-align: center; color:rgb(116, 81, 91);">排序查询</h1>
+        <br>
+        <iframe id="content" src="select_order" frameborder="1"></iframe>
+    </div>
+    <div id="c">
+        <br>
+        <h1 style="text-align: center; color:rgb(116, 81, 91);">关键字查询</h1>
+        <br>
+        <iframe id="content" src="select_key" frameborder="1"></iframe>
+    </div>
+    <div id="d">
+        <br>
+        <h1 style="text-align: center; color:rgb(116, 81, 91);">极端分数查询</h1>
+        <br>
+        <iframe id="content" src="select_main" frameborder="1"></iframe>
+    </div>
+    <!-- <a style="display:none" href="javascript:;" id="btn" title="回到顶部"></a> -->
+    <button class="button button1" id="test"><h2>回到<br>顶部</h2></button>
+
+</body>
+
+</html>

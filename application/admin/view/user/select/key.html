@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>关键字查询</title>
+    <link href="/static/css/admin/css.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/admin/main.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/admin/add.css" type="text/css" rel="stylesheet" />
+    <SCRIPT type=text/javascript src="/static/js/admin/md5.js"></SCRIPT>
+
+    <link rel="shortcut icon" href="/static/img/images/main/favicon.ico" />
+    <style>
+
+    </style>
+</head>
+
+<body style="background-color:seashell;">
+    <!--main_top-->
+    <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
+        <!-- <tr>
+            <td width="99%" align="left" valign="top">您的位置：用户管理&nbsp;&nbsp;>&nbsp;&nbsp;添加用户</td>
+        </tr> -->
+        <tr>
+            <td align="left" valign="top">
+                <form method="post" action="select_key">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
+                        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+                            <!-- <td align="right" valign="middle" class="borderright borderbottom bggray">性别：</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <input type="radio" name="order" value="asc">升序
+                                <input type="radio" name="order" value="desc">降序
+                            </td> -->
+                            <td align="right" valign="middle" class="borderright borderbottom bggray">关键字</td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <select name="value" id="level">
+                                    <option value="sname" >学生姓名</option>
+                                    <option value="sno" >学号</option>
+                                    <option value="sclass" >班级</option>
+                                    <!-- <option value="chinese" >语文</option>
+                                    <option value="mathematics" >数学</option>
+                                    <option value="english" >英语</option> -->
+                                </select>
+                            </td>
+                            <!-- <td align="right " valign="middle " class="borderright borderbottom bggray "></td> -->
+                            <td align="left " valign="middle " class="borderright borderbottom main-for">
+                                <input type="text" name="key" value="" class="text-word">
+                            </td>
+                            <td align="left" valign="middle" class="borderright borderbottom main-for">
+                                <input name="" type="submit" value="提交" class="text-but">
+                                <input name="" type="reset" value="重置" class="text-but"></td>
+                        </tr>
+
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
