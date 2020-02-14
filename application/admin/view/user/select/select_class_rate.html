@@ -9,7 +9,41 @@
     <link href="/static/css/admin/add.css" type="text/css" rel="stylesheet" />
     <link rel="shortcut icon" href="/static/img/images/main/favicon.ico" />
     <style>
-
+        .button {
+            background-color: white;
+            /* Green */
+            border: none;
+            color: #548fc9;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.2s;
+            /* Safari */
+            transition-duration: 0.2s;
+            cursor: pointer;
+        }
+        /* .button {
+            background-color: white;
+            color: black;
+            border: 2px solid #548fc9;
+        } */
+        
+        .button1 {
+            position: fixed;
+            right: 50%;
+            bottom: 0;
+            border: 2px solid #548fc9;
+            /* Green */
+        }
+        
+        .button1:hover {
+            background-color: #548fc9;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+            color: white;
+        }
     </style>
 </head>
 
@@ -43,12 +77,14 @@
                     {/volist}
 
                 </table>
-                <button onclick="back()">返回上一步</button>
-                <script>
+                <!-- <button onclick="back()">返回上一步</button> -->
+                <a href="select_class_rate"><button class="button button1" >返回查询页</button></a>
+
+                <!-- <script>
                     function back() {
                         window.history.back(-1);
                     }
-                </script>
+                </script> -->
                 <!-- <div style="text-align: center;">{//$page|raw}</div> -->
                 <!-- <td style="text-align: left;" valign="top" class="fenye">
                 </td> -->

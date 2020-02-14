@@ -509,7 +509,7 @@ class User extends Base
 	}
 
 	//优秀率及格率查询
-	public function score_select_field()
+	public function select_class_rate()
 	{
 		if (!empty($_POST)) {
 			$project = input('post.project');
@@ -556,9 +556,9 @@ class User extends Base
 			}
 			$this->assign('project', $project);
 			$this->assign('data', $data);
-			return $this->fetch();
+			return $this->fetch('user/select/select_class_rate');
 		}
-		return $this->fetch('inquire');
+		return $this->fetch('user/select/inquire');
 	}
 
 
